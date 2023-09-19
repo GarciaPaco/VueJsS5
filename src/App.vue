@@ -1,8 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Moyenne from './components/Moyenne.vue'
 const symfony = 16;
-const datas = {vue:16}
+const datas = {vue:16};
 </script>
 
 <template>
@@ -16,9 +17,11 @@ const datas = {vue:16}
         <p>Anglais : 10</p>
         <p>Symfony : {{symfony}}</p>
         <p>VueJS : {{datas.vue}}</p>
+        <h1 v-if="awesome">Vue est magnifique!</h1>
       </nav>
     </div>
   </header>
+  <Moyenne />
 </template>
 
 <style scoped>
