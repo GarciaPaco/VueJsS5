@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+const symfony = 16;
+const datas = {vue:16}
 </script>
 
 <template>
@@ -11,13 +13,12 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <p>Anglais : 10</p>
+        <p>Symfony : {{symfony}}</p>
+        <p>VueJS : {{datas.vue}}</p>
       </nav>
     </div>
   </header>
-
-  <RouterView />
 </template>
 
 <style scoped>
