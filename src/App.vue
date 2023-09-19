@@ -1,30 +1,59 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Looping from "@/components/Looping.vue";
 import HelloWorld from './components/HelloWorld.vue'
 import Moyenne from './components/Moyenne.vue'
 const symfony = 16;
 const datas = {vue:16};
+const notes = [
+  {subject: "Anglais", note: 11},
+  {subject: "Symfony", note: 16},
+  {subject: "VueJS", note: 7},
+  {subject: "PHP", note: 14},
+  {subject: "Javascript", note: 9},
+];
+
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-
       <nav>
+        <tr v-for="note in notes" >
+          <div class="loop" v-if="note.note > 10">
+          <h4>Note supérieur à 10</h4>
+          <td>{{note.subject}} : </td>
+          <td>{{note.note}} : </td>
+          </div>
+          <div class="loop"  v-else>
+          <h4>Note inférieur à 10</h4>
+          <td>{{note.subject}} : </td>
+          <td>{{note.note}} : </td>
+          </div>
+        </tr>
+      <div class="loop" >
         <p>Anglais : 10</p>
         <p>Symfony : {{symfony}}</p>
         <p>VueJS : {{datas.vue}}</p>
-        <h1 v-if="awesome">Vue est magnifique!</h1>
+      </div>
       </nav>
     </div>
   </header>
+  <Looping />
   <Moyenne />
 </template>
 
 <style scoped>
+.loop {
+  background-color: lightcoral;
+  padding: 10px;
+  color: black;
+  border: #222222 solid 1px;
+  border-radius: 7px;
+  margin: 15px;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;

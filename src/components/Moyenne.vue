@@ -14,7 +14,7 @@ const moyenne = computed(() => {
 </template>
 
 <style scoped>
-h2 {
+h1 {
   color: red;
 }
 </style>
