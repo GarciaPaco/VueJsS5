@@ -16,18 +16,11 @@ onMounted(async () => {
 <template>
   <div class="listePays">
   <h1>Pays</h1>
-    <div v-for="pays in data.slice(0,10)" :key="pays.name.common">
+    <div class='cardFlex' v-for="pays in data.slice(0,10)" :key="pays.name.common">
       <CardPays :pays="pays.name.common" :capital="pays.capital" :drapeau="pays.flags.png" :population="pays.population" ></CardPays>
     </div>
 
 
-
-
-<!--  <ul>-->
-<!--    <li v-for="pays in ListePays" :key="Pays">-->
-<!--      <router-link :to="`/pays/${pays.Pays}`">{{pays.Pays}}</router-link>-->
-<!--    </li>-->
-<!--  </ul>-->
   </div>
 </template>
 
