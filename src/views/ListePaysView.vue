@@ -2,24 +2,31 @@
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import CardPays from '../components/CardPays.vue';
+import "vue-search-select/dist/VueSearchSelect.css"
 let data = ref('');
 const dataAll = ref();
 
-onMounted(async () => {
-  const response = await axios.get('countries.json')
-  data.value = response.data
-  // dataAll.value = data.value
-});
+function filter() {
+  data.value = dataAll.value.filter((pays) => {
+        return pays.name.common.toLowerCase().includes(recherche.value.toLowerCase())
+      }
+  )}
 
+onMounted(async () => {
+  const response = await axios.get('https://restcountries.com/v3.1/all')
+  data.value = response.data
+  dataAll.value = data.value
+});
 </script>
 
 <template>
   <div class="listePays">
   <h1>Pays</h1>
+    <label for="recherche">Rechercher un pays</label>
+    <input v-model="recherche" @keydown="filter" type="text">
     <div class='cardFlex' v-for="pays in data.slice(0,10)" :key="pays.name.common">
       <CardPays :pays="pays.name.common" :capital="pays.capital" :drapeau="pays.flags.png" :population="pays.population" ></CardPays>
     </div>
-
 
   </div>
 </template>
