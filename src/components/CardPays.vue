@@ -1,10 +1,11 @@
 <script setup>
 defineProps(['pays', 'capital', 'drapeau', 'population']);
+
 </script>
 
 <template>
 
-  <img :src="drapeau" alt="">
+  <img :src="`../../public/images/${drapeau}.png`" alt="">
   <p>Pays : {{ pays }} </p>
   <p>Capital : {{ capital }}</p>
   <p>Population : {{ population }}</p>
